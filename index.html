@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Portfolio</title>
+    <style>
+       /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 50px 0;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+/* Hero Section */
+ /* HERO SECTION */
+#hero {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+    text-align: center;
+    color: #333;
+}
+
+#hero:before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 240%;
+    height: 240%;
+    z-index: -1;
+    background-image: url('/static/animated-background.jpg');  /* Ersetze 'perfektes-hintergrundbild.jpg' durch den Dateinamen deines Hintergrundbildes */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2; /* Reduziere die Opazität nach Bedarf */
+    animation: moveBackground 40s linear infinite; /* Ändere die Dauer und Art der Animation nach Bedarf */
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg); /* Ändere die Bewegung und das Drehen nach Bedarf */
+    }
+}
+
+#hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    position: relative;
+    animation: floatText 3s ease infinite alternate;
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* Button-Styling */
+.btn {
+    background-color: #666;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffa500;
+}
+
+/* Keyframes für die schwebende Animation */
+@keyframes floatText {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+
+/* About Section */
+
+#about {
+    background-color: #fff;
+    padding: 80px 0;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-picture {
+    flex: 1;
+    text-align: center;
+    transition: transform 0.3s ease; /* Animation für das Profilbild hinzugefügt */
+}
+
+.profile-picture img {
+    max-width: 100%;
+    border-radius: 50%;
+    /* Hinzufügen einer Schattenanimation beim Überfahren */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-picture img:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.bio {
+    flex: 2;
+    padding-left: 40px;
+}
+
+.bio h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    /* Hinzufügen einer Schweben-Animation für den Namen */
+    animation: floatText 5s ease infinite;
+    /* Hinzufügen des Hover-Effekts für den Namen */
+    position: relative;
+}
+
+.bio h3:hover::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('lupe.png'); /* Pfad zur Lupe */
+    background-size: cover;
+    top: -20px;
+    right: -50px;
+    transition: transform 0.3s ease;
+}
+
+.bio h3:hover::after:hover {
+    transform: scale(1.2);
+}
+
+.bio p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    /* Hinzufügen eines Fade-In-Effekts für den Text */
+    opacity: 0;
+    animation: fadeInAnimation 2s ease forwards;
+}
+
+/* Keyframes für die Schweben-Animation des Namens */
+@keyframes floatText {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes für den Fade-In-Effekt */
+@keyframes fadeInAnimation {
+    to {
+        opacity: 1;
+    }
+}
+/* Media Query für kleinere Bildschirmgrößen (z.B. Handys) */
+@media only screen and (max-width: 768px) {
+    .about-content {
+        flex-direction: column; /* Ändern der Richtung auf Spaltenlayout */
+        text-align: center; /* Zentrieren des Inhalts */
+    }
+
+    .profile-picture {
+        margin-bottom: 20px; /* Abstand zum Text hinzufügen */
+    }
+
+    .bio {
+        padding-left: 0; /* Entfernen des linken Abstands */
+    }
+}
+
+/* Portfolio Section */
+#portfolio {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.portfolio-item {
+    width: calc(50% - 20px);
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item img {
+    max-width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.portfolio-item h3 {
+    font-size: 1.5em;
+    padding: 20px;
+}
+
+.portfolio-item p {
+    padding: 0 20px 20px;
+}
+
+/* Resume Section */
+#resume {
+    padding: 80px 0;
+}
+
+.resume-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resume-content h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.resume-content p {
+    margin-bottom: 20px;
+}
+
+#resume {
+    padding: 80px 0;
+    text-align: center; /* Zentrieren des Inhalts */
+}
+
+.resume-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Übergang für Hover-Effekt */
+}
+
+.resume-content:hover {
+    transform: translateY(-5px); /* Anheben der Box beim Hover */
+}
+
+.resume-content h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif; /* Neue Schriftart */
+    color: #333; /* Textfarbe */
+}
+
+.resume-content p {
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif; /* Neue Schriftart */
+    color: #666; /* Textfarbe */
+}
+
+/* Contact Section */
+#contact {
+    background-color: #333;
+    color: #fff;
+    padding: 80px 0;
+}
+
+#contact p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background: #fff;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+button[type="submit"]:hover {
+    background: #555;
+    color: #fff;
+}
+/* Contact Section */
+#contact {
+    background-color: #333;
+    color: #fff;
+    padding: 80px 0;
+    text-align: center; /* Zentrieren des Inhalts */
+}
+
+#contact p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    font-family: 'Arial', sans-serif; /* Neue Schriftart */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 15px; /* Größeres Padding für verbesserte Ästhetik */
+    margin-bottom: 30px; /* Größerer Abstand zwischen den Eingabefeldern */
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Größere abgerundete Ecken */
+    font-family: 'Arial', sans-serif; /* Neue Schriftart */
+    font-size: 1em; /* Kleiner Schriftgröße */
+}
+
+button[type="submit"] {
+    background: #fff;
+    color: #333;
+    padding: 15px 30px; /* Größeres Padding für verbesserte Ästhetik */
+    border: none;
+    border-radius: 8px; /* Größere abgerundete Ecken */
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease; /* Übergang für Hintergrundfarbe */
+}
+
+button[type="submit"]:hover {
+    background: #555;
+    color: #fff;
+}
+
+/* Animation für Hover-Effekt */
+button[type="submit"]:hover {
+    transform: scale(1.05); /* Vergrößern beim Hover */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+footer nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Übergangseffekt für Navbar-Links */
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8); /* Hinzufügen eines Schatteneffekts */
+}
+
+/* Schwebende Animation für das Profilbild */
+.profile-picture img {
+    max-width: 100%;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Übergang für Transform und Schatten */
+}
+
+.profile-picture img:hover {
+    transform: scale(1.1); /* Vergrößern des Bildes */
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.8); /* Hinzufügen eines Schatteneffekts */
+}
+
+/* Animation für Portfolio-Boxen */
+.portfolio-item {
+    width: calc(50% - 20px);
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Übergang für Transform, Schatten und Hintergrund */
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px); /* Anheben der Box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Hinzufügen eines stärkeren Schattens */
+    background-color: #f5f5f5; /* Ändern des Hintergrunds */
+}
+/* Neuer Schriftartstil für Portfolio-Titel */
+#portfolio h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Animation für Portfolio-Bilder */
+.portfolio-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Übergang für Transform und Schatten */
+}
+
+.portfolio-item img:hover {
+    transform: scale(1.05); /* Vergrößern des Bildes */
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.8); /* Hinzufügen eines Schatteneffekts */
+}
+
+/* Stil für Projektinformationen */
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Stil für Projektbeschreibung */
+.project-description {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.project-description h4 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-description p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    color: #666;
+}
+
+/* Neue Anordnung und Styling für Portfolio-Boxen */
+.portfolio-item {
+    width: calc(33.33% - 20px); /* Ändern der Breite für eine bessere Anordnung */
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Übergang für Transform, Schatten und Hintergrund */
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px); /* Anheben der Box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Hinzufügen eines stärkeren Schattens */
+    background-color: #f5f5f5; /* Ändern des Hintergrunds */
+}
+
+/* Stil für Portfolio-Elemente, um sie in einer Reihe anzuordnen */
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+/* Neuer Stil für Portfolio-Boxen */
+.portfolio-item {
+    width: calc(33.33% - 20px); /* Ändern der Breite für eine bessere Anordnung */
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 20px; /* Hinzufügen von abgerundeten Ecken */
+    overflow: hidden; /* Verhindern, dass abgerundete Ecken das Bild überlappen */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Übergang für Transform, Schatten und Hintergrund */
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px); /* Anheben der Box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Hinzufügen eines stärkeren Schattens */
+    background-color: #f5f5f5; /* Ändern des Hintergrunds */
+}
+
+/* Stil für Portfolio-Elemente, um sie in einer Reihe anzuordnen */
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Stil für Projektinformationen */
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Stil für Projektbeschreibung */
+.project-description {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.project-description h4 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-description p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    color: #666;
+}
+/* Media Query für kleinere Bildschirmgrößen (z.B. Handys) */
+@media only screen and (max-width: 768px) {
+    .portfolio-item {
+        width: calc(100% - 20px); /* Ändern der Breite auf 100% */
+        margin-bottom: 20px;
+    }
+
+    .project-info {
+        padding: 10px;
+    }
+
+    .project-info h3 {
+        font-size: 1.5em; /* Verkleinern der Schriftgröße für den Titel */
+    }
+
+    .project-info p {
+        font-size: 0.9em; /* Verkleinern der Schriftgröße für den Text */
+    }
+
+    .project-description {
+        padding: 10px;
+        overflow-x: auto; /* Horizontales Scrollen aktivieren */
+    }
+}
+
+
+/* Weitere Animationen können nach Bedarf hinzugefügt werden */
+
+/* Navbar-Styling */
+.navbar-toggle {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.navbar-toggle div {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggle.active div:first-child {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.navbar-toggle.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active div:last-child {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Ändere die Hintergrundfarbe des Buttons beim Hovern */
+.navbar-toggle:hover div {
+    background-color: #ffcc00; /* Neue Hintergrundfarbe */
+}
+
+#navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: width 0.5s ease;
+    z-index: 999;
+}
+
+#navbar.active {
+    width: 200px;
+}
+
+#navbar ul {
+    padding: 20px;
+    list-style: none;
+    text-align: center; /* Zentrieren der Navbar-Inhalte */
+}
+
+#navbar ul li {
+    margin-bottom: 20px;
+}
+
+#navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    color: #ffcc00;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+   <!-- HEADER -->
+
+
+    <!-- Navbar-Toggle-Button -->
+    <div class="navbar-toggle" onclick="toggleNavbar()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#about">Über mich</a></li>
+            <li><a href="#portfolio">Projekte</a></li>
+            <li><a href="#resume">Lebenslauf</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container">
+            <h2>Hello, I am Jan Ceko</h2>
+            <p>DevOps Engineer apprentice @ Swisscom / Scrum Master / STV Product Owner</p>
+            <a href="#contact" class="btn">Kontaktieren Sie mich</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <h2>Über mich</h2>
+            <div class="about-content">
+                <div class="profile-picture">
+                    <img src="/static/profile.jpg" alt="Jan Ceko">
+                </div>
+                <div class="bio">
+                    <h3>Jan Ceko</h3>
+                    <p>DevOps Engineer apprentice @ Swisscom / Scrum Master / STV Product Owner</p>
+                    <p>Ich bin ein Applikationsentwickler und DevOps Scrum Master, der derzeit bei Swisscom in der Lehre tätig ist. Meine Arbeit im Projekt Newsroom P2S-Team ermöglicht es mir, meine Fähigkeiten sowohl als Entwickler als auch als Teamleiter unter Beweis zu stellen. Neben meinen Verantwortlichkeiten bei Anchorman übernehme ich die Rolle des stellvertretenden Product Owners, was mir eine ganzheitliche Perspektive auf die Softwareentwicklung verschafft.</p>
+                    <p>Zusätzlich zu meiner Berufsausbildung mache ich die BM, was meinen Ehrgeiz und meine Entschlossenheit im Streben nach persönlicher und beruflicher Entwicklung unterstreicht.</p>
+                    <p>Meine Erfahrungen umfassen nicht nur die Mitarbeit an spannenden Projekten wie Smart Business Connect im Bereich Sicherheit, sondern auch fundierte Kenntnisse in Datenbanken (SQL), Containerisierung (Docker), sowie Programmiersprachen wie Python, Java und Angular. Ich bin vertraut mit Tools wie JIRA, und habe umfangreiche Erfahrung im agilen Softwareentwicklungsprozess, einschließlich SCRUM.</p>
+                    <p>Mein Ziel ist es, durch kreative Lösungsansätze und eine strukturierte Arbeitsweise zur kontinuierlichen Verbesserung beizutragen und herausragende Ergebnisse zu erzielen. Ich bin stets bestrebt, mein Wissen zu erweitern und neue Herausforderungen anzunehmen, um mich in einer dynamischen und wettbewerbsorientierten Umgebung weiterzuentwickeln.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+
+<section id="portfolio">
+    <div class="container">
+        <h2>Projekte</h2>
+        <div class="portfolio-items">
+            <!-- Projekt 1 -->
+            <div class="portfolio-item">
+                <div class="project-info">
+                   <img src="/static/Team-Anchroman.jpg" alt="Swisscom Logo" width="200px">
+                    <h3>Newsroom Team Anchorman- P2S</h3>
+                    <p>DevOps Engineer,Scrum Master,StV PO</p>
+                    <p>Teilzeit</p>
+                    <p>Zürich, Schweiz</p>
+                    <p>Jan. 2024 – Heute (10 Monate)</p>
+                    <p>Kenntnisse: Docker, JavaScript, AngularJS, Python, DevOps, HTML, CSS, Agile Softwareentwicklung, Back-End-Webentwicklung, IT Security</p>
+                </div>
+                <div class="project-description">
+                    <h4></h4>
+                    <p></p>
+                </div>
+            </div>
+            <!-- Projekt 2 -->
+            <div class="portfolio-item">
+                <div class="project-info">
+                    <img src="/static/Active-Probing.jpg" alt="Projekt 2" width="95px">
+                    <h3>Active Probing</h3>
+                    <p>Position: DevOps Engineer</p>
+                    <p>Arbeitszeit: Vollzeit</p>
+                    <p>Ort: Zürich, Schweiz</p>
+                    <p>Zeitraum: Feb.2023-Aug.2023</p>
+                    <p>Kenntnisse: JavaScript · AngularJS · Python (Programmiersprache) · DevOps</p>
+                </div>
+                <div class="project-description">
+                    <h4></h4>
+                    <p></p>
+                </div>
+            </div>
+            <!-- Projekt 3 -->
+            <div class="portfolio-item">
+                <div class="project-info">
+                    <img src="/static/placeholder.jpg" alt="Projekt 3" width="110px">
+                    <h3>Smart Business Connect</h3>
+                    <p>Position: DevOps Engineer</p>
+                    <p>Arbeitszeit: Vollzeit</p>
+                    <p>Ort: Zürich, Schweiz</p>
+                    <p>Zeitraum: Aug.2022-Feb.2023</p>
+                    <p>Kenntnisse:  MySQL · PHP · SQLite · Microsoft SQL Server</p>
+                </div>
+                <div class="project-description">
+                    <h4></h4>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- RESUME SECTION -->
+<section id="resume">
+    <div class="container">
+        <h2>Lebenslauf</h2>
+        <div class="resume-content">
+            <!-- Hier können Sie Ihren Lebenslauf hinzufügen -->
+            <h3>cv</h3>
+            <p><a href="https://swisscom-my.sharepoint.com/:b:/p/jan_ceko/EQ45_yoXJUFGjYp0TMi57JkBS2fZJVn3kZNrU7-ihHimFQ?e=zfYkI1" target="_blank">Lebenslauf herunterladen</a></p>
+            <!-- Ersetzen Sie "https://swisscom-my.sharepoint.com/:b:/p/jan_ceko/EQ45_yoXJUFGjYp0TMi57JkBS2fZJVn3kZNrU7-ihHimFQ?e=zfYkI1" durch Ihren tatsächlichen Link zum PDF -->
+            <h3>LinkedIN</h3>
+            <p><a href="https://www.linkedin.com/in/jan-ceko-62ba9b2b4/" target="_blank">LinkedIn-Profil</a></p>
+            <!-- Ersetzen Sie "https://www.linkedin.com/in/jan-ceko-62ba9b2b4/" durch Ihren tatsächlichen LinkedIn-Profillink -->
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2>Kontakt</h2>
+            <p>Sie können mich über das folgende Formular oder direkt über [Jan.Ceko@swisscom.com] kontaktieren.</p>
+            <form action="https://formspree.io/f/mnqeboer" method="POST">
+                <input type="text" name="name" placeholder="Ihr Name" required>
+                <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+                <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
+                <button type="submit">Nachricht senden</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mein Portfolio. Alle Rechte vorbehalten.</p>
+            <nav>
+                <ul>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+  <script>
+
+        // Funktion zum Umschalten der Navbar-Anzeige
+        function toggleNavbar() {
+            var navbar = document.getElementById("navbar");
+            var navbarToggle = document.querySelector(".navbar-toggle");
+            navbar.classList.toggle("active");
+            navbarToggle.classList.toggle("active");
+        }
+
+         // Funktion zum Überwachen der Scrollposition und Anpassen der Textopazität
+    window.addEventListener('scroll', function() {
+        var bioText = document.querySelector('.bio p');
+        var bioPosition = bioText.getBoundingClientRect().top;
+        var screenPosition = window.innerHeight;
+
+        if (bioPosition < screenPosition) {
+            bioText.style.opacity = "1";
+        }
+    });
+
+
+    </script>
+</body>
+</html>
